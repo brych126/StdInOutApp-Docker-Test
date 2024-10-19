@@ -19,9 +19,9 @@ WORKDIR /app
 #Just to view processes
 RUN apt-get update && apt-get install -y procps
 
-# When copying from separate stage then permissions will be the same as using 
-# Git repository as the build context:
-# Permission for executables and directories is rwx-xr-xr so, for files rw-r--r
+# When copying from separate stage/local context then initil file permissions will be kept 
+# When using Git repository as the build context:
+# Permission for executables and directories is always rwx-xr-xr so, for files always rw-r--r
 # So, app user is able to run program
 COPY --link --from=build /app .
 
